@@ -8,5 +8,9 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
+div {
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,.2);
+  padding: 1em;
+}
 </style>
