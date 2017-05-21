@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import ServerListing from './ServerListing.vue'
-import ServerDetails from './ServerDetails.vue'
+import ServerListing from './components/ServerListing.vue'
+import ServerDetails from './components/ServerDetails.vue'
 export default {
   components: {
     'app-server-listing': ServerListing,
