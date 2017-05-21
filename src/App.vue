@@ -1,10 +1,14 @@
 <template lang="pug">
 .container
-  h1 Initial Setup
+  app-user
 </template>
 
 <script>
+import User from './components/User.vue'
 export default {
+  components: {
+    appUser: User
+  }
 }
 </script>
 
