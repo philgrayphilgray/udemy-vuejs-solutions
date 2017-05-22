@@ -9,7 +9,7 @@
     .col-xs-12.col-sm-6
       app-server-listing
     .col-xs-12.col-sm-6
-      app-server-details
+      app-server-details(serverStatus='Critical')
   hr
   .row
     .col-xs-12
