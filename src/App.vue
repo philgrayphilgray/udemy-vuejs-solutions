@@ -4,7 +4,7 @@
     .col-sm-12
       app-quote
         h2(slot='title') {{ quoteTitle }}
-        p(slot='content') A wonderful Quote
+        p A wonderful Quote
 </template>
 
 <script>

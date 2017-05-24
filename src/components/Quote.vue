@@ -2,8 +2,9 @@
 div.card
   .card-title
     slot(name='title')
+    span(name='subtitle') The Subtitle
   .card-content
-    slot(name='content')
+    slot
 </template>
 
 <script>
