@@ -3,8 +3,8 @@
   .row
     .col-sm-12
       app-quote
-        h2 {{ quoteTitle }}
-        p A wonderful Quote
+        h2(slot='title') {{ quoteTitle }}
+        p(slot='content') A wonderful Quote
 </template>
 
 <script>
