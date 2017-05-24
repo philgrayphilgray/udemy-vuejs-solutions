@@ -6,8 +6,9 @@
       button.btn.btn-primary(@click='selectedComponent="appAuthor"') Author
       button.btn.btn-primary(@click='selectedComponent="appNew"') New
       p {{ selectedComponent }}
-      component(:is='selectedComponent')
-        h2 Default content
+      keep-alive
+        component(:is='selectedComponent')
+          h2 Default content
 </template>
 
 <script>
