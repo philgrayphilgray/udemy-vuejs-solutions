@@ -51,9 +51,9 @@
     hr
     .row
       .col-sm-12
-        button.btn.btn-primary Submit
+        button.btn.btn-primary(@click.prevent='submitted') Submit
   hr
-  .row
+  .row(v-if='isSubmitted')
     .col-sm-12
       .card
         .card-block
@@ -91,7 +91,13 @@ export default {
       sendMail: [],
       priorities: ['High', 'Medium', 'Low'],
       selectedPriority: 'High',
-      dataSwitch: true
+      dataSwitch: true,
+      isSubmitted: false
+    }
+  },
+  methods: {
+    submitted(){
+      this.isSubmitted = true;
     }
   },
   components: {
