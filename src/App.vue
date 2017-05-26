@@ -4,14 +4,8 @@
   hr
   form
     .row
-      .col-sm-12
-        .form-group
-          label(for='fname') First Name
-          input#fname.form-control(v-model='userData.fname')
-      .col-sm-12
-        .form-group
-          label(for='lname') Last Name
-          input#lname.form-control(v-model='userData.lname')
+      app-fname
+    .row
       .col-sm-12
         .form-group
           label(for='email') Email
@@ -60,6 +54,7 @@
 </template>
 
 <script>
+import FullName from './FullName.vue';
 export default {
   data(){
     return{
@@ -72,6 +67,9 @@ export default {
       storeInDb: false,
       submitted: false
     }
+  },
+  components: {
+    appFname: FullName
   },
   methods: {
     printFullName(){
