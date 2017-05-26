@@ -47,6 +47,10 @@
           option(v-for='priority in priorities') {{ priority }}
     .row
       .col-sm-12
+        app-switch(v-model='dataSwitch')
+    hr
+    .row
+      .col-sm-12
         button.btn.btn-primary Submit
   hr
   .row
@@ -69,9 +73,11 @@
               li(v-for='item in sendMail') {{ item }}
             p Gender: {{ userData.gender }}
             p Priority: {{ selectedPriority }}
+            p Switched {{ dataSwitch }}
 </template>
 
 <script>
+import Switch from './Switch.vue';
 export default {
   data(){
     return{
@@ -84,8 +90,12 @@ export default {
       message: '',
       sendMail: [],
       priorities: ['High', 'Medium', 'Low'],
-      selectedPriority: 'High'
+      selectedPriority: 'High',
+      dataSwitch: true
     }
+  },
+  components: {
+    appSwitch: Switch
   }
 }
 </script>
