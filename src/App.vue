@@ -1,10 +1,83 @@
 <template lang="pug">
 .container
-  h1 Initial Setup
+  h2 Signup Now
+  hr
+  form
+    .row
+      .col-sm-12
+        .form-group
+          label(for='fname') First Name
+          input#fname.form-control(v-model='userData.fname')
+      .col-sm-12
+        .form-group
+          label(for='lname') Last Name
+          input#lname.form-control(v-model='userData.lname')
+      .col-sm-12
+        .form-group
+          label(for='email') Email
+          input#email.form-control(v-model='userData.email')
+      .col-sm-12
+        .form-group
+          label(for='password') Password
+          input#password.form-control(v-model='userData.password')
+      .col-sm-12
+        label(for='storeInDb') Store in DB?
+        .form-check#storeInDb
+          label.form-check-label(for='yes')
+            input#yes(type='radio', v-model='storeInDb', value='true')
+          |  Yes
+          label.form-check-label(for='no')
+            input#no(type='radio', v-model='storeInDb', value='false')
+          |  No
+    hr
+    .row
+      .col-sm-12
+        button.btn.btn-primary(@click.prevent='submitted="true"') Submit
+  hr
+  .row(v-if='submitted')
+    .col-sm-12
+      .card
+        .card-block
+          .card-title
+            h4 Your Data
+          .card-text
+            p Full Name: {{ printFullName() }}
+            p Email: {{ userData.email }}
+            p Password: {{ userData.password }}
+            p Store in Database?: {{ storeInDb }}
+//- exercise 1
+//- create a signup form where you retrieve the following information
+//- full name (first name + last name)
+//- email
+//- password
+// store data? yes/no
+//- exercise 2
+//- only diplay the form if it has been submitted
+//- display the data summary once the form has been submitted
+//- exercise 3
+//- edit the example from above and create a custom 'full name' control
+//- which still holds the first name and last name input field
 </template>
 
 <script>
 export default {
+  data(){
+    return{
+      userData: {
+        fname: '',
+        lname: '',
+        email: '',
+        password: ''
+      },
+      storeInDb: false,
+      submitted: false
+    }
+  },
+  methods: {
+    printFullName(){
+      return `${this.userData.fname}  ${this.userData.lname}`;
+    }
+  }
 }
 </script>
 
