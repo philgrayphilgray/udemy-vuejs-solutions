@@ -10,40 +10,41 @@
           input#email.form-control(type='text', v-model='userData.email')
         .form-group
           label(for='password') Password
-          input#password.form-control(type='password', v-model='userData.password')
+          input#password.form-control(type='password', v-model.lazy='userData.password')
         .form-group
           label(for='age') Age
-          input#age.form-control(type='number', v-model='userData.age')
+          input#age.form-control(type='number', v-model.number='userData.age')
     .row
       .col-sm-12.form-group
         label(for='message') Message
-        textarea#message.form-control(rows='5', v-model='userData.message')
+        textarea#message.form-control(rows='5', v-model='message')
     .row
       .col-sm-12
         .form-group
           .form-check
             label.form-check-label(for='sendmail')
-              input#sendmail.form-check-input(type='checkbox', value='SendMail')
+              input#sendmail.form-check-input(type='checkbox', value='SendMail', v-model='sendMail')
             |  Send Mail
-          .form-check
             label.form-check-label(for='sendInfomail')
-              input#sendInfomail.form-check-input(type='checkbox', value='SendInfoMail')
+              input#sendInfomail.form-check-input(type='checkbox', value='SendInfoMail', v-model='sendMail')
             |  Send Infomail
     .row
       .col-sm-12.form-group
         .form-check
           label.form-check-label(for='male')
-            input#male(type='radio', value='Male')
+            input#male(type='radio', value='Male', v-model='userData.gender')
           |  Male
-        .form-check
           label.form-check-label(for='female')
-            input#female(type='radio', value='Female')
+            input#female(type='radio', value='Female', v-model='userData.gender')
           |  Female
+          label.form-check-label(for='other')
+            input#female(type='radio', value='Other', v-model='userData.gender')
+          |  Other
     .row
       .col-sm-12.form-group
         label(for='priority') Priority
-        select#priority.form-control
-          option
+        select#priority.form-control(v-model='selectedPriority')
+          option(v-for='priority in priorities') {{ priority }}
     .row
       .col-sm-12
         button.btn.btn-primary Submit
@@ -58,15 +59,16 @@
             p Email: {{ userData.email }}
             p Password: {{ userData.password }}
             p Age: {{ userData.age }}
-            p Message: {{ userData.message }}
+            p(style='white-space: pre-wrap;') Message:
+              br
+              | {{ message }}
             p
               strong
                 | Send Mail?
             ul
-              li
-            p Gender:
-            p Priority:
-            p Switched:
+              li(v-for='item in sendMail') {{ item }}
+            p Gender: {{ userData.gender }}
+            p Priority: {{ selectedPriority }}
 </template>
 
 <script>
@@ -77,8 +79,12 @@ export default {
         email: '',
         password: '',
         age: '',
-        message: ''
-      }
+        gender: 'Other'
+      },
+      message: '',
+      sendMail: [],
+      priorities: ['High', 'Medium', 'Low'],
+      selectedPriority: 'High'
     }
   }
 }
