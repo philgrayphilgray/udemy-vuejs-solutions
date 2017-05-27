@@ -2,9 +2,9 @@
 .container
   h2 Signup Now
   hr
-  form
+  form(v-if='!submitted')
     .row
-      app-fname
+      app-full-name(v-model='userData.fullName')
     .row
       .col-sm-12
         .form-group
@@ -13,7 +13,7 @@
       .col-sm-12
         .form-group
           label(for='password') Password
-          input#password.form-control(v-model='userData.password')
+          input#password.form-control(type='password', v-model='userData.password')
       .col-sm-12
         label(for='storeInDb') Store in DB?
         .form-check#storeInDb
@@ -35,7 +35,7 @@
           .card-title
             h4 Your Data
           .card-text
-            p Full Name: {{ printFullName() }}
+            p Full Name: {{ userData.fullName }}
             p Email: {{ userData.email }}
             p Password: {{ userData.password }}
             p Store in Database?: {{ storeInDb }}
@@ -59,8 +59,7 @@ export default {
   data(){
     return{
       userData: {
-        fname: '',
-        lname: '',
+        fullName: '',
         email: '',
         password: ''
       },
@@ -69,12 +68,7 @@ export default {
     }
   },
   components: {
-    appFname: FullName
-  },
-  methods: {
-    printFullName(){
-      return `${this.userData.fname}  ${this.userData.lname}`;
-    }
+    appFullName: FullName
   }
 }
 </script>
