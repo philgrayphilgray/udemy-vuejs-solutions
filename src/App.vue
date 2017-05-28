@@ -4,18 +4,22 @@
     .col-sm-12
       h1 Filters & Mixins
       p {{ text | toUppercase | to-lowercase }}
+      button(@click='fruits.push("Straweberries")') Add New Item
       input(v-model='filterText')
       ul
         li(v-for='fruit in searchFruits') {{ fruit }}
+      hr
+      app-list
 </template>
 
 <script>
+import List from './List.vue';
+import { fruitMixin } from './fruitMixin'
 export default {
+  mixins: [fruitMixin],
   data() {
     return {
-      text: 'Hello!',
-      fruits: ['Apple', 'Banana', 'Mango', 'Melon'],
-      filterText: ''
+      text: 'Hello!'
     }
   },
   filters: {
@@ -23,12 +27,8 @@ export default {
       return value.toUpperCase();
     }
   },
-  computed: {
-    searchFruits(){
-      return this.fruits.filter((element) => {
-        return element.match(this.filterText);
-      });
-    }
+  components: {
+    appList : List
   }
 }
 </script>
