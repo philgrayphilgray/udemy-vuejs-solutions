@@ -6,7 +6,7 @@
       .card
         .card-block
           .card-title
-            h2 1. Reverse that shit with a local filter
+            h2 1. Reverse it with a local filter
             //- Local filter reverses text -//
           .card-text
             label(for='userInput') User Input:&nbsp;
