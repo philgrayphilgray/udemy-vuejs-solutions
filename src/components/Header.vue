@@ -22,6 +22,18 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
 </template>
 
 <script>
+/** to do
+
+@click end day, generate random +/- numbers to add to the price of each stock
+
+(later, update object with realtime stock values)
+
+@click save to send data to firebase with vue-resource
+
+@click load to get data from firebase with vue-resource
+
+**/
+
 export default {
 }
 </script>

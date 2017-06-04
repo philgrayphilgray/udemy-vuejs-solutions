@@ -1,12 +1,12 @@
 <template lang="pug">
 div
   .row
-    .col-xs-12.col-md-6.mb-3
+    .col-xs-12.col-md-6.mb-3(v-for='stock in $store.state.stocks')
       .card
         .card-title.alert-success
           .card-block
-            h4.float-left BMW
-            span &nbsp;(Price: 110)
+            h4.float-left {{ stock.name }}
+            span &nbsp;(Price: {{ stock.price }})
         .card-block
           .card-content
             .row
@@ -14,50 +14,22 @@ div
                 input.form-control(type='number', placeholder='Quantity')
               .col-xs-12.col-md-6
                 button.btn.btn-success.float-right Buy
-    .col-xs-12.col-md-6.mb-3
-      .card
-        .card-title.alert-success
-          .card-block
-            h4.float-left Google
-            span &nbsp;(Price: 200)
-        .card-block
-          .card-content
-            .row
-              .col-xs-12.col-md-6
-                input.form-control(type='number', placeholder='Quantity')
-              .col-xs-12.col-md-6
-                button.btn.btn-success.float-right Buy
-  .row
-    .col-xs-12.col-md-6.mb-3
-      .card
-        .card-title.alert-success
-          .card-block
-            h4.float-left Apple
-            span &nbsp;(Price: 250)
-        .card-block
-          .card-content
-            .row
-              .col-xs-12.col-md-6
-                input.form-control(type='number', placeholder='Quantity')
-              .col-xs-12.col-md-6
-                button.btn.btn-success.float-right Buy
-    .col-xs-12.col-md-6.mb-3
-      .card
-        .card-title.alert-success
-          .card-block
-            h4.float-left Twitter
-            span &nbsp;(Price: 8)
-        .card-block
-          .card-content
-            .row
-              .col-xs-12.col-md-6
-                input.form-control(type='number', placeholder='Quantity')
-              .col-xs-12.col-md-6
-                button.btn.btn-success.float-right Buy
-
 </template>
 
 <script>
+/** to do
+
+@click method with vuex
+check if stock exists in myStocks
+(later check if there's enough money)
+if not, push stock object to myStocks with quantity specified by input
+if it exists,
+update the myStock stock.quantity += the value specified by the input
+recalculate currentFunds
+currentFunds -= stock.quantity * stock.price
+
+**/
+
 export default {
 }
 </script>
