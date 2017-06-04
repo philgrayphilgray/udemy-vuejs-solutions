@@ -18,7 +18,7 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
           a.dropdown-item(href='#') Save Data
           a.dropdown-item(href='#') Load Data
       li.nav-item
-        span.navbar-text Funds: $10,000
+        span.navbar-text Funds: {{ $store.state.currentFunds | currency('$', 0) }}
 </template>
 
 <script>

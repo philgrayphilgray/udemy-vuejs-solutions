@@ -13,7 +13,7 @@ div
               .col-xs-12.col-md-6
                 input.form-control(type='number', placeholder='Quantity')
               .col-xs-12.col-md-6
-                button.btn.btn-danger.float-right Buy
+                button.btn.btn-danger.float-right Sell
     .col-xs-12.col-md-6.mb-3
       .card
         .card-title.alert-info
@@ -26,7 +26,7 @@ div
               .col-xs-12.col-md-6
                 input.form-control(type='number', placeholder='Quantity')
               .col-xs-12.col-md-6
-                button.btn.btn-danger.float-right Buy
+                button.btn.btn-danger.float-right Sell
   .row
     .col-xs-12.col-md-6.mb-3
       .card
@@ -40,7 +40,7 @@ div
               .col-xs-12.col-md-6
                 input.form-control(type='number', placeholder='Quantity')
               .col-xs-12.col-md-6
-                button.btn.btn-danger.float-right Buy
+                button.btn.btn-danger.float-right Sell
     .col-xs-12.col-md-6.mb-3
       .card
         .card-title.alert-info
@@ -53,7 +53,7 @@ div
               .col-xs-12.col-md-6
                 input.form-control(type='number', placeholder='Quantity')
               .col-xs-12.col-md-6
-                button.btn.btn-danger.float-right Buy
+                button.btn.btn-danger.float-right Sell
 </template>
 
 <script>
