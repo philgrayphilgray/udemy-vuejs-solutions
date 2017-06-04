@@ -13,7 +13,7 @@ div
               .col-xs-12.col-md-6
                 input.form-control(type='number', placeholder='Quantity', v-model='myStock.quantity')
               .col-xs-12.col-md-6
-                button.btn.btn-danger.float-right Sell
+                button.btn.btn-danger.float-right(@click='sell({name: myStock.name, price: myStock.price})') Sell
 </template>
 
 <script>
@@ -28,7 +28,13 @@ recalculate currentFunds
 currentFunds += stock.quantity * stock.price
 
 **/
+import { mapActions } from 'vuex';
 export default {
+  methods: {
+    ...mapActions([
+      'sell'
+    ])
+  }
 }
 </script>
 

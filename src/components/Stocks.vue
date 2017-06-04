@@ -13,7 +13,7 @@ div
               .col-xs-12.col-md-6
                 input.form-control(type='number', placeholder='Quantity')
               .col-xs-12.col-md-6
-                button.btn.btn-success.float-right Buy
+                button.btn.btn-success.float-right(@click='buy({name: stock.name, price: stock.price})') Buy
 </template>
 
 <script>
@@ -29,8 +29,13 @@ recalculate currentFunds
 currentFunds -= stock.quantity * stock.price
 
 **/
-
+import { mapActions } from 'vuex';
 export default {
+  methods: {
+    ...mapActions([
+      'buy'
+    ])
+  }
 }
 </script>
 
