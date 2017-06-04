@@ -2,13 +2,13 @@
 nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
   button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarNavDropdown', aria-controls='navbarNavDropdown', aria-expanded='false', aria-label='Toggle navigation')
     span.navbar-toggler-icon
-  a.navbar-brand(href='#') Stock Trader
+  router-link.navbar-brand(to='/', active-class='active', exact) Stock Trader
   .collapse.navbar-collapse#navbarNavDropdown
     ul.navbar-nav
-      li.nav-item.active
-        a.nav-link(href='#') Portfolio
-      li.nav-item
-        a.nav-link(href='#') Stocks
+      router-link.nav-item(to='portfolio', tag='li', active-class='active')
+        a.nav-link Portfolio
+      router-link.nav-item(to='stocks', tag='li', active-class='active')
+        a.nav-link Stocks
     ul.navbar-nav.ml-auto
       li.nav-item
         a.nav-link(href='#') End day

@@ -1,11 +1,8 @@
 <template lang="pug">
 .container
   app-header
-  home
-  hr
-  app-stocks
-  hr
-  app-portfolio
+  br
+  router-view
 </template>
 
 <script>
