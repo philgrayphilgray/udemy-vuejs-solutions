@@ -7,11 +7,17 @@
       p You may Save & Load your data.
       p Click on 'End Day' to begin a new day!
       hr
-      h4 Your Funds: {{ $store.state.currentFunds | currency('$', 0) }}
+      h4 Your Funds: {{ getCurrentFunds | currency('$', 0) }}
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
+  computed: {
+    ...mapGetters([
+      'getCurrentFunds'
+    ])
+  }
 }
 </script>
 

@@ -1,35 +1,39 @@
 <template lang="pug">
 div
   .row
-    .col-xs-12.col-md-6.mb-3(v-for='myStock in $store.state.myStocks')
+    .col-xs-12.col-md-6.mb-3(v-for='(myStock, i) in getMyStocks')
       .card
         .card-title.alert-info
           .card-block
             h4.float-left {{ myStock.name }}
             span &nbsp;(Price: {{ myStock.price }})
+            .badge.badge-info.float-right Current Quantity: {{ myStock.quantity }}
+            br
+            .badge.badge-success.float-right Value: {{ myStock.quantity * myStock.price | currency}}
+            br
         .card-block
           .card-content
             .row
               .col-xs-12.col-md-6
-                input.form-control(type='number', placeholder='Quantity', v-model='myStock.quantity')
+                input.form-control(type='number', placeholder='Quantity', v-model='quantities[i]', min='0')
               .col-xs-12.col-md-6
-                button.btn.btn-danger.float-right(@click='sell({name: myStock.name, price: myStock.price})') Sell
+                button.btn.btn-danger.float-right(@click='sell({name: myStock.name, price: myStock.price, quantity: quantities[i]})') Sell
 </template>
 
 <script>
-/**
-to do's
-@click handler for selling
-send payload (input value) with vuex
-
-validate input: if input value > quantity, disable input and display message "You only own 3 shares of this stock."
-
-recalculate currentFunds
-currentFunds += stock.quantity * stock.price
-
-**/
+import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 export default {
+  data(){
+    return{
+      quantities: { 0: 0, 1: 0, 2: 0, 3: 0}
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getMyStocks'
+    ])
+  },
   methods: {
     ...mapActions([
       'sell'

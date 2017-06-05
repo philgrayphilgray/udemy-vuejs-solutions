@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   .row
-    .col-xs-12.col-md-6.mb-3(v-for='stock in $store.state.stocks')
+    .col-xs-12.col-md-6.mb-3(v-for='(stock, i) in getAvailableStocks')
       .card
         .card-title.alert-success
           .card-block
@@ -11,26 +11,26 @@ div
           .card-content
             .row
               .col-xs-12.col-md-6
-                input.form-control(type='number', placeholder='Quantity')
+                input.form-control(type='number', placeholder='Quantity', v-model='quantities[i]', min='1')
               .col-xs-12.col-md-6
-                button.btn.btn-success.float-right(@click='buy({name: stock.name, price: stock.price})') Buy
+                button.btn.btn-success.float-right(@click='buy({name: stock.name, price: stock.price, quantity: quantities[i]})') Buy
 </template>
 
 <script>
-/** to do
-
-@click method with vuex
-check if stock exists in myStocks
-(later check if there's enough money)
-if not, push stock object to myStocks with quantity specified by input
-if it exists,
-update the myStock stock.quantity += the value specified by the input
-recalculate currentFunds
-currentFunds -= stock.quantity * stock.price
-
-**/
+import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
 export default {
+  data(){
+    return{
+      quantities: {}
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getAvailableStocks',
+      'getCurrentFunds'
+    ])
+  },
   methods: {
     ...mapActions([
       'buy'

@@ -11,14 +11,14 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
         a.nav-link Stocks
     ul.navbar-nav.ml-auto
       li.nav-item
-        a.nav-link(href='#') End day
+        button.btn.btn-danger(@click='updateStocks') End day
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbarDropdownMenuLink(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Save & Load
         .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
           a.dropdown-item(href='#') Save Data
           a.dropdown-item(href='#') Load Data
       li.nav-item
-        span.navbar-text Funds: {{ $store.state.currentFunds | currency('$', 0) }}
+        span.navbar-text Funds: {{ getCurrentFunds | currency('$', 0) }}
 </template>
 
 <script>
@@ -33,8 +33,18 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
 @click load to get data from firebase with vue-resource
 
 **/
-
+import { mapGetters, mapActions } from 'vuex';
 export default {
+  computed: {
+    ...mapGetters([
+      'getCurrentFunds'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'updateStocks'
+    ])
+  }
 }
 </script>
 
