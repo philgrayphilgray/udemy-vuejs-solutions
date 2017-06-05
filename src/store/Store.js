@@ -85,7 +85,7 @@ let newValue = (plusOrMinus * delta) + 2;
 stock.price += newValue;
 state.myStocks.forEach((myStock)=>{
   if(stock.name == myStock.name){
-  myStock.price = stock.price;  
+  myStock.price = stock.price;
   }
 });
       })

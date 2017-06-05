@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 import App from './App.vue'
 import { routes } from './routes';
 import { store } from './store/Store';
@@ -7,7 +8,10 @@ import Vue2Filters from 'vue2-filters';
 
 
 Vue.use(VueRouter);
+Vue.use(VueResource);
 Vue.use(Vue2Filters);
+
+
 const router = new VueRouter({
   routes,
   mode: 'history'

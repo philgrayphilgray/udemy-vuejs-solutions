@@ -15,8 +15,8 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbarDropdownMenuLink(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Save & Load
         .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
-          a.dropdown-item(href='#') Save Data
-          a.dropdown-item(href='#') Load Data
+          a.dropdown-item(@click='saveData') Save Data
+          a.dropdown-item(@click='loadData') Load Data
       li.nav-item
         span.navbar-text Funds: {{ getCurrentFunds | currency('$', 0) }}
 </template>
@@ -43,7 +43,19 @@ export default {
   methods: {
     ...mapActions([
       'updateStocks'
-    ])
+    ]),
+    saveData(){
+            this.$http.put('https://stocktrader-proj.firebaseio.com/data.json', this.$store.state);
+    },
+    loadData(){
+      this.$http.get('https://stocktrader-proj.firebaseio.com/data.json')
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        this.$store.replaceState(data);
+      });
+    }
   }
 }
 </script>
