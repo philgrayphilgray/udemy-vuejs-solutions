@@ -11,9 +11,9 @@ div
           .card-content
             .row
               .col-xs-12.col-md-6
-                input.form-control(type='number', placeholder='Quantity', v-model='quantities[i]', min='1')
+                input.form-control(type='number', placeholder='Quantity', v-model='quantities[i]', min='0')
               .col-xs-12.col-md-6
-                button.btn.btn-success.float-right(@click='buy({name: stock.name, price: stock.price, quantity: quantities[i]})') Buy
+                button.btn.btn-success.float-right(@click='buy({name: stock.name, price: stock.price, quantity: quantities[i]})', :disabled='quantities[i] * stock.price > getCurrentFunds ? true : false') Buy
 </template>
 
 <script>

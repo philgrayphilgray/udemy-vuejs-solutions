@@ -17,7 +17,7 @@ div
               .col-xs-12.col-md-6
                 input.form-control(type='number', placeholder='Quantity', v-model='quantities[i]', min='0')
               .col-xs-12.col-md-6
-                button.btn.btn-danger.float-right(@click='sell({name: myStock.name, price: myStock.price, quantity: quantities[i]})') Sell
+                button.btn.btn-danger.float-right(@click='sell({name: myStock.name, price: myStock.price, quantity: quantities[i]})', :disabled='quantities[i] > myStock.quantity ? true : false') Sell
 </template>
 
 <script>
